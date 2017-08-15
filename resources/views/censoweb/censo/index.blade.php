@@ -30,6 +30,7 @@
 					<th style="text-align: center;"><h4>Ficha</h4></th>
 					<th style="text-align: center;"><h4>Dirección</h4></th>
 					<th style="text-align: center;"><h4>Zona</h4></th>
+					<th style="text-align: center;"><h4>Cabeza Hogar</h4></th>
 					<th style="text-align: center;"><h4>Acciones</h4></th>
 				</tr>
 			</thead>
@@ -39,7 +40,7 @@
 					<td><strong>{{ $grupo->numero_ficha }}</strong></td>
 					<td>{{ $grupo->direccion }}</td>
 					<td>{{ $grupo->zona }}</td>
-				
+					<td>{{$grupo->nombre_1}} {{$grupo->nombre_2}} {{$grupo->apellido_1}} {{$grupo->apellido_2}}</td>
 					<td style="align: center">
 						<a class="btn btn-info btn-sm" href="{{ route('personagrupo-familiar.edit', $grupo->id) }}">Editar</a>
 						<a class="btn btn-danger btn-sm" href="">Eliminar</a>

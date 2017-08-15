@@ -91,7 +91,7 @@ class PersonaController extends Controller
         $persona->direccion = $request->direccion;
         $persona->id_genero = $request->genero;
         $persona->id_estado_civil = $request->estado_civil;
-        $persona->cabeza_familia = 1;
+        $persona->cabeza_familia = $request->cabezahogar;
         $persona->id_niveleducativo = $request->nivel_educativo;
         $persona->id_grupo_familiar = $idGrupoFamiliar;
         $persona->id_ocupacion = $request->ocupacion;
