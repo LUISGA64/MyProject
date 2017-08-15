@@ -1,0 +1,27 @@
+<application>
+  <component name="ProjectManager">
+    <defaultProject>
+      <component name="InspectionProjectProfileManager">
+        <option name="PROJECT_PROFILE" />
+        <version value="1.0" />
+      </component>
+      <component name="JsFlowSettings">
+        <service-enabled>false</service-enabled>
+        <exe-path />
+        <annotation-enable>false</annotation-enable>
+        <other-services-enabled>false</other-services-enabled>
+      </component>
+      <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />
+      <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP 7.1">
+        <include_path>
+          <path value="C:\xampp\php\PEAR" />
+        </include_path>
+      </component>
+      <component name="PropertiesComponent">
+        <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.composer" />
+        <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
+        <property name="last_opened_file_path" value="C:/" />
+      </component>
+    </defaultProject>
+  </component>
+</application>
