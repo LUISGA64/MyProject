@@ -74,8 +74,8 @@ class CensoController extends Controller
                 'personas.nombre_1',
                 'personas.nombre_2',
                 'personas.apellido_1',
-                'personas.apellido_2'
-            )
+                'personas.apellido_2')
+                ->where('personas.cabeza_familia','=','T')
         ->paginate(2);
         //dd($grupos);
         return view('censoweb.censo.index', compact('grupos'));
