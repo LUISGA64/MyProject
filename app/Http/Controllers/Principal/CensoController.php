@@ -24,6 +24,7 @@ use App\Models\Vivienda\Vector_Vivienda;
 use DB;
 use Illuminate\Http\Request;
 
+
 //use Illuminate\Pagination\Paginator;
 //use Illuminate\Pagination\LengthAwarePaginator;
 

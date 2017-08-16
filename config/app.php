@@ -166,6 +166,7 @@ return [
         /*Censo*/
         Acoustep\EntrustGui\EntrustGuiServiceProvider::class,
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
+        Yajra\Datatables\DatatablesServiceProvider::class,
     ],
 
     /*
@@ -220,6 +221,7 @@ return [
         /*Censo*/
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
         'Alert' => UxWeb\SweetAlert\SweetAlert::class,
+        //'Yajra' => Yajra\Datatables\Facades\Datatables::class,
     ],
 
 ];
