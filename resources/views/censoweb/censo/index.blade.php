@@ -42,8 +42,9 @@
 					<td>{{ $grupo->zona }}</td>
 					<td>{{$grupo->nombre_1}} {{$grupo->nombre_2}} {{$grupo->apellido_1}} {{$grupo->apellido_2}}</td>
 					<td style="align: center">
-						<a class="btn btn-info btn-sm" href="{{ route('personagrupo-familiar.edit', $grupo->id) }}">Editar</a>
-						<a class="btn btn-danger btn-sm" href="">Eliminar</a>
+						<a class="btn btn-warning" href="{{ route('personagrupo-familiar.edit', $grupo->id) }}">Editar</a>
+						{{-- <a class="btn btn-danger" href="">Eliminar</a> --}}
+						<a class="btn btn-success" href="{{ route('personagrupo-familiar.new',[$grupo->id]) }}">Usuario</a>
 					</td>
 
 					
