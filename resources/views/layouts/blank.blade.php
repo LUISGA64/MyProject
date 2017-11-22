@@ -9,9 +9,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        @section('htmlheader_title')
-            
-        @endsection
+        <title>Censo Web - @yield('htmlheader_title', 'Your title')</title>
 
         <!-- Bootstrap -->
         <link href="{{ asset("css/bootstrap.min.css") }}" rel="stylesheet">
@@ -21,8 +19,13 @@
         <link href="{{ asset("css/gentelella.min.css") }}" rel="stylesheet">
         {{-- SweetAlert --}}
         <link href="{{ asset('sweetalert/css/sweetalert.css') }}" rel="stylesheet">
-
-        
+        {{-- Datatables --}}
+        {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('select2/css/select2.css') }}" rel="stylesheet">
+        <link href="{{ asset('ui/jquery-ui.css') }}" rel="stylesheet">
+        <link href="{{ asset('ui/jquery-ui.theme.css') }}" rel="stylesheet">
+        <link href="{{ asset('datatable/css/dataTables.bootstrap.css') }}" rel="stylesheet"> --}}
+        <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
         @stack('stylesheets')
 
     </head>
@@ -51,7 +54,18 @@
         {{-- Censo Web -JS --}}
         <script type="text/javascript" src="{{ asset("/censoweb/act_econ.js") }}"></script>
         <script type="text/javascript" src="{{ asset('/sweetalert/js/sweetalert.min.js') }}"></script>
+        {{-- Datatables --}}
+        {{-- <script src="{{ asset('datatable/js/jquery.dataTables.js') }}"></script>
+        <script src="{{ asset('js/dataTables.bootstrap.min.js') }}"></script>
+        <script src="{{ asset('datatable/js/ui/jquery-ui.js') }}"></script> --}}
+        <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+        <!-- Bootstrap JavaScript -->
+       {{--  <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> --}}
         @include('sweet::alert')
+
+        {{-- Archivos para las graficas --}}
+        <script type="text/javascript" src="{{ asset('/js/highcharts.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('/js/graficas.js') }}"></script>
         @stack('scripts')
 
     </body>

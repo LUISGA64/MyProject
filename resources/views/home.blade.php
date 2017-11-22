@@ -12,21 +12,26 @@
 <!-- page content -->
 <div class="right_col" role="main">
 	
-    <div class="">
-	<script type="text/javascript" src="{{ asset('/censoweb/act_econ.js') }}"></script>
-	
-    </div>
+	<div class="">
+		{{-- <script type="text/javascript" src="{{ asset('/censoweb/act_econ.js') }}"></script> --}}
+		<h1 style="text-align: center; color: #3EB2AB">Listado Censal</h1>
+		{{-- <img style="display: block; margin: auto;" src="/img/DocResaguardo/{{ $resg->logo_resg }}" /> --}}
 
+
+
+	</div>
 </div>
-<!-- /page content -->
 
-<!-- footer content -->
+
+
+
+
 
 <footer>
-    <div class="pull-right">
-        <h3><strong>Censo Web</strong></h3>
-    </div>
-    <div class="clearfix"></div>
+	<div class="pull-right">
+		<h3><strong>Censo Web</strong></h3>
+	</div>
+	<div class="clearfix"></div>
 </footer>
 <!-- /footer content -->
 @endsection

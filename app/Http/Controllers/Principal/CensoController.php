@@ -1,95 +1,78 @@
 <?php
 
-namespace App\Http\Controllers\Principal;
-
-use Alert;
-use App\Http\Controllers\Controller;
-use App\Models\Catalogos\Estado_Civil;
-use App\Models\Catalogos\Genero;
-use App\Models\Catalogos\Nivel_Educativo;
-use App\Models\Catalogos\Ocupacion;
-use App\Models\Economia\Actividad_Economica;
-use App\Models\Economia\Tipo_Actividad;
-use App\Models\Principal\Grupo_Familiar;
-use App\Models\Vivienda\Agua_Servida;
-use App\Models\Vivienda\Consumo_Agua;
-use App\Models\Vivienda\Eliminar_Excretas;
-use App\Models\Vivienda\Material_Pared;
-use App\Models\Vivienda\Material_Piso;
-use App\Models\Vivienda\Material_Techo;
-use App\Models\Vivienda\Riesgo_Vivienda;
-use App\Models\Vivienda\Tipo_Alumbrado;
-use App\Models\Vivienda\Tipo_Vivienda;
-use App\Models\Vivienda\Vector_Vivienda;
-use DB;
-use Illuminate\Http\Request;
+    namespace App\Http\Controllers\Principal;
 
 
-//use Illuminate\Pagination\Paginator;
-//use Illuminate\Pagination\LengthAwarePaginator;
-
-class CensoController extends Controller
-{
-
-
-    public function byactividad($id)
-    {
-        return Tipo_Actividad::where('id_actividad_economica',$id)->get();
-    }
+    use App\Http\Controllers\Controller;
+    use App\Models\Catalogos\Estado_Civil;
+    use App\Models\Catalogos\Genero;
+    use App\Models\Catalogos\Nivel_Educativo;
+    use App\Models\Catalogos\Ocupacion;
+    use App\Models\Economia\Actividad_Economica;
+    use App\Models\Economia\Tipo_Actividad;
+    use App\Models\Principal\Grupo_Familiar;
+    use App\Models\Vivienda\Agua_Servida;
+    use App\Models\Vivienda\Consumo_Agua;
+    use App\Models\Vivienda\Eliminar_Excretas;
+    use App\Models\Vivienda\Material_Pared;
+    use App\Models\Vivienda\Material_Piso;
+    use App\Models\Vivienda\Material_Techo;
+    use App\Models\Vivienda\Riesgo_Vivienda;
+    use App\Models\Vivienda\Tipo_Alumbrado;
+    use App\Models\Vivienda\Tipo_Vivienda;
+    use App\Models\Vivienda\Vector_Vivienda;
+    use App\Models\Principal\Persona;
+    use Illuminate\Http\Request;
+    use Datatables;
+    use Carbon\Carbon;
+    use Alert;
+    use DB;
 
 
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Request $request)
-    {
-        /*$personas = DB:: table ('grupos_familiares')
-        ->join('personas', 'grupos_familiares.id', '=', 'personas.id_grupo_familiar')
-        ->join('generos', 'personas.id_genero', '=', 'generos.id')
-        ->join('tipo_docs', 'personas.id_tipo_doc', '=', 'tipo_docs.id')
-        ->select(
-            'grupos_familiares.numero_ficha',
-            'personas.id_persona',
-            'personas.nombre_1', 
-            'personas.nombre_2',
-            'personas.apellido_1',
-            'personas.apellido_2',
-            'personas.identificacion',
-            'personas.direccion',
-            'personas.telefono',
-            'tipo_docs.codigo_doc', 
-            'generos.cod_genero')
-        ->paginate(7);
-        return view('censoweb.censo.index', compact('personas'));*/
+    class CensoController extends Controller{
 
+
+   
+        /*public function getIndex()
+        {
+            return view('censoweb.censo.index');
+        }*/
+
+
+        /*
+        Function JavaScript para Combo del tipo actividad
+        */
+        public function byactividad($id)
+        {
+            return Tipo_Actividad::where('id_actividad_economica',$id)->get();
+        }
+
+
+        public function index()
+        { 
         $grupos = DB::table('grupos_familiares')
-            ->join('personas', 'grupos_familiares.id', '=', 'personas.id_grupo_familiar')
-            ->select(
-                'grupos_familiares.id',
-                'grupos_familiares.numero_ficha',
-                'grupos_familiares.direccion',
-                'grupos_familiares.zona',
-                'personas.nombre_1',
-                'personas.nombre_2',
-                'personas.apellido_1',
-                'personas.apellido_2')
-                ->where('personas.cabeza_familia','=','T')
-        ->paginate(2);
+        ->join('personas', 'grupos_familiares.id', '=', 'personas.grupofamiliar_id')
+        ->select(
+        'grupos_familiares.id',
+        'grupos_familiares.numero_ficha',
+        'grupos_familiares.direccion',
+        'personas.identificacion',
+        'personas.nombre_1',
+        'personas.nombre_2',
+        'personas.apellido_1',
+        'personas.apellido_2')
+        ->where('personas.cabeza_familia', '=', 'T')->get();
+        
+
         //dd($grupos);
         return view('censoweb.censo.index', compact('grupos'));
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+        }
+
+
     public function create()
     {
-
         $tiposvivienda = Tipo_Vivienda::all();
         $acteconom = Actividad_Economica::all();
         $materialestecho = Material_Techo::all();
@@ -106,47 +89,41 @@ class CensoController extends Controller
         $excretas = Eliminar_Excretas::all();
         $aguaservidas = Agua_Servida::all();
         return view ('censoweb.censo.create', compact(
-            'tiposvivienda',
-            'acteconom',
-            'materialestecho', 
-            'materialespiso',
-            'materialparedes',
-            'riesgos',
-            'vectores',
-            'generos',
-            'estadosciviles',
-            'ocupaciones',
-            'niveles_educativos',
-            'tiposalumbrado',
-            'consumosagua',
-            'excretas',
-            'aguaservidas'));
+        'tiposvivienda',
+        'acteconom',
+        'materialestecho', 
+        'materialespiso',
+        'materialparedes',
+        'riesgos',
+        'vectores',
+        'generos',
+        'estadosciviles',
+        'ocupaciones',
+        'niveles_educativos',
+        'tiposalumbrado',
+        'consumosagua',
+        'excretas',
+        'aguaservidas'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $this->validate($request, [
-            'ficha' => 'required|numeric',
-            'direccion',
-            'zona' => 'required',
-            'id_tipo_vivienda',
-            'id_material_paredes',
-            'id_material_pisos',
-            'id_material_techo',
-            'id_tipo_actividad',
-            'consumo_agua',
-            'tipo_alumbrado',
-            'elimina_excretas',
-            'aguas_servidas',
-            'id_vector_viviendas',
-            'id_riesgo_vivienda'
-            ]);
+        'ficha' => 'required|numeric',
+        'direccion',
+        'zona' => 'required',
+        'id_tipo_vivienda',
+        'id_material_paredes',
+        'id_material_pisos',
+        'id_material_techo',
+        'id_tipo_actividad',
+        'consumo_agua',
+        'tipo_alumbrado',
+        'elimina_excretas',
+        'aguas_servidas',
+        'id_vector_viviendas',
+        'id_riesgo_vivienda'
+        ]);
         $grupo_familiar = new Grupo_Familiar;
         $grupo_familiar->numero_ficha = $request->ficha;
         $grupo_familiar->direccion = $request->direccion;
@@ -168,23 +145,30 @@ class CensoController extends Controller
         return redirect()->route('personagrupo-familiar.new',[$grupo_familiar->id]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+        $grupos = DB::table('grupos_familiares')
+        ->join('personas', 'grupos_familiares.id', '=', 'personas.grupofamiliar_id')
+        ->join('generos', 'personas.id_genero', '=', 'generos.id')
+        ->join('parentescos', 'personas.id_parentesco', '=', 'parentescos.id')
+        ->select(
+        'personas.id_persona',
+        'personas.nombre_1',
+        'personas.nombre_2',
+        'personas.apellido_1',
+        'personas.apellido_2',
+        'personas.telefono',
+        'generos.genero',
+        'personas.direccion',
+        'personas.telefono',
+        'parentescos.parentesco')
+        ->where('personas.grupofamiliar_id', '=',$id)
+        ->orderBy('id_persona', 'asc')
+        ->paginate(7);
+
+        return view('censoweb.censo.show', compact('grupos','id'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $tiposvivienda = Tipo_Vivienda::all();
@@ -198,51 +182,39 @@ class CensoController extends Controller
         $tiposalumbrado = Tipo_Alumbrado::all();
         $riesgos = Riesgo_Vivienda::all();
         $vectores = Vector_Vivienda::all();
-        $grupos = Grupo_Familiar::find($id);
         $tipoactividades = Tipo_Actividad::all();
-        return view('censoweb.censo.edit', compact(
-            'grupos', 
-            'tiposvivienda',
-            'acteconom',
-            'materialestecho',
-            'materialespiso',
-            'materialparedes',
-            'consumosagua',
-            'excretas',
-            'aguaservidas',
-            'tiposalumbrado',
-            'riesgos',
-            'vectores',
-            'tipoactividades'
-            ));
         
+        $grupos = Grupo_Familiar::find($id);
+        return view('censoweb.censo.edit', compact(
+        'grupos', 
+        'tiposvivienda',
+        'acteconom',
+        'materialestecho',
+        'materialespiso',
+        'materialparedes',
+        'consumosagua',
+        'excretas',
+        'aguaservidas',
+        'tiposalumbrado',
+        'riesgos',
+        'vectores',
+        'tipoactividades'
+        ));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
         $grupos = Grupo_Familiar::find($id)->update($request->all());
         Alert::success('Ficha Modificada con Exito!');
         return redirect()->route('censo.index');
-
         //dd($request);
         //return redirect()->route('personagrupo-familiar.new',[$grupo_familiar->id]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+    //
     }
+
 }

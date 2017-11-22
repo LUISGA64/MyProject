@@ -16,7 +16,7 @@ Crear Personas
 	<div class="x_title">
 		<div class="pull-left"><h3><strong>Ficha Familiar: {{ $grupofamiliar->id }}</strong></h3></div>
 		<ul class="nav navbar-right panel_toolbox">
-			<li><a class="link" a href="{{ route('censo.create') }}"><i class="fa fa-reply-all" style="color: #337ab7"></i></a></li>
+			<li><a class="link" a href="{{ route('grupo-familiar-create') }}"><i class="fa fa-reply-all" style="color: #337ab7"></i></a></li>
 			<li><a class="collapse-link"><i class="fa fa-chevron-up" style="color: #26B99A"></i></a></li>
 		</ul>
 		<div class="clearfix"></div>
@@ -155,8 +155,9 @@ Crear Personas
 		</div>
 		<div class="modal-footer">
 			<button type="submit" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Agregar</button>
+			{{--  --}}
+			<a class="btn btn-danger btn-close btn-lg" href="{{ route('grupo-familiar-index') }}"><span> <i class="fa fa-close"> Cancelar</i></span></a>
 
-			<a class="btn btn-success btn-lg" href="{{ route('censo.create') }}"><span class="btn-label"> <i class="fa fa-plus" ></i></span> Grupo Familiar</a>
 		</div>
 	</div>
 	{!! Form::close() !!}

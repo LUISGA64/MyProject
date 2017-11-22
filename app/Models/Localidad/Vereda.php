@@ -13,6 +13,6 @@ class Vereda extends Model
 
     public function resguardo()
     {
-    	return $this->belongsTo('App\Models\Localidad\Resguardo');
+    	return $this->belongsTo('App\Models\Localidad\Resguardo','id_resguardo');
     }
 }

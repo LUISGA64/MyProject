@@ -31,7 +31,7 @@
 	<div class="x_panel">
 		<div class="x_title">
 			<ul class="nav navbar-right panel_toolbox">
-				<li><a class="link" a href="{{ route('censo.index') }}"><i class="fa fa-reply-all" style="color: #337ab7"></i></a></li>
+				<li><a class="link" a href="{{ route('grupo-familiar-index') }}"><i class="fa fa-reply-all" style="color: #337ab7"></i></a></li>
 				<li><a class="collapse-link"><i class="fa fa-chevron-up" style="color: #26B99A"></i></a></li>
 			</ul>
 			<div class="clearfix"></div>
@@ -246,17 +246,19 @@
 	<div class="row" >
 		<div class="col-md-6 col-md-12 col-xs-12 col-sm-6 col-md-12">
 			<div class="col-md-3 col-sm-12 col-xs-12 ">
-				<button type="submit" class="btn btn-info btn-lg" style="margin-left: 20px">
+				<button type="submit" class="btn btn-info btn-lg" style="margin-left: 10px">
 					<span class="glyphicon glyphicon-floppy-disk"> </span> Guardar</button>
 			</div>
-			{{--  --}}
-			<div class="col-md-6 col-md-12 col-xs-12 col-sm-6 col-md-12">
+			{{-- <div class="col-md-6 col-md-12 col-xs-12 col-sm-6 col-md-12">
 				<div class="col-md-3 col-sm-12 col-xs-12 ">
 					<a class="btn btn-success btn-lg" href="{{ route('personagrupo-familiar.new',[$grupos->id]) }}"><span class="btn-label"> <i class="glyphicon glyphicon-user"></i></span> Nuevo Usuario</a>
 				</div>
-			</div>
+			</div> --}}
+			<a class="btn btn-danger btn-close btn-lg" style="margin-left: 25px" href="{{ route('grupo-familiar-index') }}"><span> <i class="fa fa-close"> Cancelar</i></span></a>
 		</div>
 	</div>
+
+	
 
 </div>
 

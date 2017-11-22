@@ -65,7 +65,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'es',
 
     /*
     |--------------------------------------------------------------------------
@@ -162,6 +162,7 @@ return [
 		Conner\Tagging\Providers\TaggingServiceProvider::class,
 		Collective\Html\HtmlServiceProvider::class,
 		Watson\BootstrapForm\BootstrapFormServiceProvider::class,
+        Laravel\Tinker\TinkerServiceProvider::class,
 
         /*Censo*/
         Acoustep\EntrustGui\EntrustGuiServiceProvider::class,
@@ -221,7 +222,8 @@ return [
         /*Censo*/
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
         'Alert' => UxWeb\SweetAlert\SweetAlert::class,
-        //'Yajra' => Yajra\Datatables\Facades\Datatables::class,
+        'Datatables' => Yajra\Datatables\Facades\Datatable::class,
+
     ],
 
 ];

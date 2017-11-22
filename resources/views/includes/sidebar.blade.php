@@ -1,7 +1,9 @@
 <div class="col-md-3 left_col">
     <div class="left_col scroll-view">
         <div class="navbar nav_title" style="border: 0;">
-            <a href="{{ url('/') }}" class="site_title"><i class="fa fa-paw"></i> <span>Censo Web</span></a>
+            <a href="{{ url('/') }}" class="site_title">
+                {{-- <img style="width: 25px; height: 25px" src="/img/DocResaguardo/{{ $resg->logo_resg }}" />  --}}
+            <span>Censo Web</span></a>
         </div>
         <div class="clearfix"></div>
         <!-- menu profile quick info -->
@@ -29,9 +31,21 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="{{ route('censo.index') }}">
+                        <a href="{{ route('grupo-familiar-index') }}">
                             <i class="fa fa-laptop"></i>
                             Ficha Familiar
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('personagrupo-familiar.index') }}">
+                            <i class="fa fa-user"></i>
+                            Comuneros
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('resguardo-index') }}">
+                            <i class="fa fa-map-o"></i>
+                            Resguardo Indígena
                         </a>
                     </li>
                 </ul>

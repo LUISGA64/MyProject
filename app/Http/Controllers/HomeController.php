@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Localidad\Resguardo;
+use App\Models\Principal\Persona;
+use DB;
 use Alert;
 
 
@@ -24,8 +26,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        
-        return view('home');
+        $resg = Resguardo::first();
+        $personas = DB::table('personas')
+        ->join('generos','id','=','personas.id_genero')
+        ->where('generos.cod_genero', '=', 'F')
+        ->select(DB::raw('count(*) as comuneros_femenino'))
+        ->get();
+        //dd($personas);
+        return view('home', compact('personas','resg'));
 
     }
 }

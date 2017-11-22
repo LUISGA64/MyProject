@@ -21,10 +21,18 @@ class Persona extends Model
     	'id_estado_civil',
     	'cabeza_familia',
     	'id_niveleducativo',
-    	'id_grupo_familiar',
+    	'grupofamiliar_id',
         'id_ocupacion',
-        'id_parentesco'
+        'id_parentesco',
+        'fecha_nacimiento',
+        'edad'
     ];
+
+
+    public function grupo_familiar()
+    {
+        return $this->belongsto('App\Models\Principal\Grupo_Familiar','id_persona');
+    }
 
     public function tipo_doc()
     {
@@ -51,19 +59,9 @@ class Persona extends Model
     	return $this->hasOne('App\Models\Catalogos\Ocupacion');
     }
 
-    public function grupo_familiar()
-    {
-    	//return $this->hasOne('App\Models\Principal\Grupo_Familiar');
-        return $this->hasOne(Grupo_Familiar::class,'id');
-    }
-
     public function parentesco()
     {
     	return $this->hasOne('App\Models\Catalogos\Parentesco');
     }
 
-    public function getFullNameAttribute()
-    {
-        return $this->nombre_1 . ' ' . $this->nombre_2 .' '. $this->apellido_1 . ' ' . $this->apellido_2;
-    }
 }

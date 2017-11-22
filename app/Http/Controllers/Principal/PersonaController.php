@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Principal;
 
-use Alert;
 use App\Http\Controllers\Controller;
+use App\Models\Principal\Persona;
 use App\Models\Catalogos\Estado_Civil;
 use App\Models\Catalogos\Genero;
 use App\Models\Catalogos\Nivel_Educativo;
@@ -11,8 +11,11 @@ use App\Models\Catalogos\Ocupacion;
 use App\Models\Catalogos\Parentesco;
 use App\Models\Catalogos\Tipo_Doc;
 use App\Models\Principal\Grupo_Familiar;
-use App\Models\Principal\Persona;
 use Illuminate\Http\Request;
+use Datatables;
+use Carbon\Carbon;
+use Alert;
+use DB;
 
 class PersonaController extends Controller
 {
@@ -23,9 +26,23 @@ class PersonaController extends Controller
      */
     public function index(Request $request)
     {
-
-        $ficha = Grupo_Familiar::all();
-        return view('censoweb.personas.index', compact('id', 'ficha'));
+        $personas = DB::table('personas')
+        ->join('tipo_docs', 'personas.id_tipo_doc', '=', 'tipo_docs.id')
+        ->join('generos', 'personas.id_genero', '=', 'generos.id')
+        ->select(
+            'personas.id_persona',
+            'personas.grupofamiliar_id',
+            'personas.identificacion',
+            'personas.nombre_1',
+            'personas.nombre_2',
+            'personas.apellido_1',
+            'personas.apellido_2',
+            'personas.fecha_nacimiento',
+            'personas.edad',
+            'generos.genero',
+            'tipo_docs.codigo_doc')
+        ->get();
+        return view('censoweb.personas.index', compact('id', 'ficha', 'personas'));
     }
 
     /**
@@ -62,23 +79,6 @@ class PersonaController extends Controller
      */
     public function store(Request $request, $idGrupoFamiliar)
     {
-
-        /*$this->validate($request, [
-            'nombre_1' => 'required|min:3|max:15',
-            'nombre_2' => 'min:3|max:15',
-            'apellido_1' => 'required|min:3|max:15',
-            'apellido_2' => 'min:3|max:15',
-            'telefono' => 'min:6|max:12|numeric',
-            'direccion' => 'required',
-            'id_genero' => 'required',
-            'id_estado_civil' => 'required',
-            'cabeza_familia',
-            'id_niveleducativo' => 'required',
-            'id_grupo_familiar' => 'required',
-            'id_ocupacion' => 'required',
-            'id_parentesco'
-            ]);*/
-
         $persona = new Persona;
         $fullname = $request->nombre_1.' '.$request->nombre_2.' '.$request->apellido_1.' '.$request->apellido_2;
         $persona->id_tipo_doc = $request->tipo_doc;
@@ -93,10 +93,11 @@ class PersonaController extends Controller
         $persona->id_estado_civil = $request->estado_civil;
         $persona->cabeza_familia = $request->cabezahogar;
         $persona->id_niveleducativo = $request->nivel_educativo;
-        $persona->id_grupo_familiar = $idGrupoFamiliar;
+        $persona->grupofamiliar_id = $idGrupoFamiliar;
         $persona->id_ocupacion = $request->ocupacion;
         $persona->id_parentesco = $request->parentesco;
-        //dd($persona);
+        $persona->fecha_nacimiento = $request->fecha_nacimiento;
+        $persona->edad = Carbon::parse($persona->fecha_nacimiento)->age;
         $persona->save();
         $personas = Persona::all();
         Alert::success('Comunero Registrado a la ficha Familiar', 'Censo Web');
@@ -114,16 +115,57 @@ class PersonaController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+
+   /* public function edit(Persona $id)
     {
-        $persona = Persona::find($id);
-        dd($persona);
+        $generos = Genero::all();
+        $tiposdocumento = Tipo_Doc::all();
+        $parentescos = Parentesco::all();
+        $ocupaciones = Ocupacion::all();
+        $niveles_educativos = Nivel_Educativo::all();
+        $estadosciviles = Estado_Civil::all();
+        
+        $personas = Persona::find($id_persona);
+        dd($personas);
+
+        /*return view('censoweb.personas.edit', compact(
+            'personas', 
+            'generos',
+            'tiposdocumento',
+            'parentescos', 
+            'ocupaciones',
+            'niveles_educativos',
+            'estadosciviles'
+        ));
+        
+    }*/
+
+    public function edit(Persona $id_persona)
+    {   
+        $grupofamiliar = Grupo_Familiar::all();
+        $generos = Genero::all();
+        $tiposdocumento = Tipo_Doc::all();
+        $parentescos = Parentesco::all();
+        $ocupaciones = Ocupacion::all();
+        $niveles_educativos = Nivel_Educativo::all();
+        $estadosciviles = Estado_Civil::all();
+        $personas = Persona::find($id_persona)
+        //
+        //
+        //
+        ->select('personas.*');
+        return view('censoweb.personas.create', compact(
+            'grupofamiliar',
+            'generos',
+            'tiposdocumento',
+            'parentescos', 
+            'ocupaciones',
+            'niveles_educativos',
+            'estadosciviles',
+            'personas'
+            ));
+
+        
     }
 
     /**
@@ -133,9 +175,11 @@ class PersonaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        dd($personas->id_persona);
+        //$personas = Persona::find($id)->update($request->all());
+        //return redirect()->route('censo.index');
     }
 
     /**

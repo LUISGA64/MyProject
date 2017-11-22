@@ -1,14 +1,10 @@
   @extends('layouts.blank')
-
   @push('stylesheets')
-
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.15.2/axios.js"></script>
-
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-
   @endpush
   @section('htmlheader_title')
-  Registro Grupo Familiar
+    Registro Grupo Familiar
   @endsection
   @section('main_container')
   {!! Form::open(array('route'=>'censo.store', 'method'=>'POST','class'=>'form-horizontal')) !!}
@@ -223,8 +219,11 @@
           {!! Form::close() !!}
           <div class="row" style="margin-top: 10px; margin-bottom: 10px">
             {{-- boton mostrar modal --}}
-            <button type="submit" class="btn btn-info" style="margin-left: 20px">
+            <button type="submit" class="btn btn-info btn-lg" style="margin-left: 20px">
               <span class="glyphicon glyphicon-floppy-disk"> </span> Guardar</button>
+            
+            <a class="btn btn-danger btn-close btn-lg" href="{{ route('censo.index') }}"><span> <i class="fa fa-close"> Cancelar</i></span></a>
+
             </div>
             {{-- div que contiene los botones --}}
           </div>{{-- fin del contenido del panel --}}

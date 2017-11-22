@@ -26,6 +26,12 @@ class Grupo_Familiar extends Model
         'id_resguardo'
     ];
 
+    public function persona()
+    {        
+        //return $this->hasmany(Persona::class, 'id_persona','id');    id_persona
+        return $this->hasMany('App\Models\Principal\Persona','grupofamiliar_id');
+    }
+
     public function tipo_vivienda()
     {
     	return $this->hasOne('App\Models\Vivienda\Tipo_Vivienda');
@@ -59,12 +65,6 @@ class Grupo_Familiar extends Model
     public function riesgo_vivienda()
     {
     	return $this->hasOne('App\Models\Vivienda\Riesgo_Vivienda');
-    }
-
-    public function persona()
-    {
-        //return $this->belongsTo('App\Models\Principal\Persona');
-        return $this->belongsTo(Persona::class, 'id_persona');
     }
 
     public function resguardo()
