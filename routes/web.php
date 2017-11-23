@@ -29,13 +29,10 @@ Route::get('grupo-familiar-create', 'Principal\CensoController@create')->name('g
 
 /*personas*/
 Route::get('personas-grupofamiliar', 'Principal\PersonaController@index')->name('personagrupo-familiar.index');
-/*Edit*/
-Route::get('persona-censoweb/{id}/edit', 'Principal\PersonaController@edit')->name('persona-censoweb-edit');
-Route::PUT('persona-censoweb/{id}/update', 'Principal\CensoController@update')->name('persona-censoweb-update');
 Route::get('grupo-familiar/{id}/persona/new', 'Principal\PersonaController@create')->name('personagrupo-familiar.new');
 Route::POST('grupo-familiar/{id}/persona/store', 'Principal\PersonaController@store')->name('idGrupoFamiliar');
-
-
+Route::get('persona-censoweb/{id}/edit', 'Principal\PersonaController@edit')->name('persona-censoweb-edit');
+Route::PUT('persona-censoweb/{id}/update', 'Principal\CensoController@update')->name('persona-censoweb-update');
 //Route::resource('personas', 'Principal\PersonaController');
 
 

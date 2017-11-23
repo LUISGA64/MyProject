@@ -116,7 +116,7 @@ class PersonaController extends Controller
     }
 
 
-   /* public function edit(Persona $id)
+    public function edit(Persona $id_persona)
     {
         $generos = Genero::all();
         $tiposdocumento = Tipo_Doc::all();
@@ -126,7 +126,7 @@ class PersonaController extends Controller
         $estadosciviles = Estado_Civil::all();
         
         $personas = Persona::find($id_persona);
-        dd($personas);
+        dd($id_persona);
 
         /*return view('censoweb.personas.edit', compact(
             'personas', 
@@ -136,11 +136,11 @@ class PersonaController extends Controller
             'ocupaciones',
             'niveles_educativos',
             'estadosciviles'
-        ));
+        ));*/
         
-    }*/
+    }
 
-    public function edit(Persona $id_persona)
+    /*public function edit(Persona $id_persona)
     {   
         $grupofamiliar = Grupo_Familiar::all();
         $generos = Genero::all();
@@ -149,12 +149,26 @@ class PersonaController extends Controller
         $ocupaciones = Ocupacion::all();
         $niveles_educativos = Nivel_Educativo::all();
         $estadosciviles = Estado_Civil::all();
-        $personas = Persona::find($id_persona)
-        //
-        //
-        //
-        ->select('personas.*');
-        return view('censoweb.personas.create', compact(
+        $personas = DB::table('personas')
+        ->join('grupos_familiares as gf','gf.id','=','personas.grupofamiliar_id')
+        ->join('generos as gn','gn.id','=','personas.id_genero')
+        ->join('tipo_docs as td','td.id','=','personas.id_tipo_doc')
+        ->join('parentescos as pt','pt.id','=','personas.id_parentesco')
+        ->join('ocupaciones as oc','oc.id','=','personas.id_ocupacion')
+        ->join('niveles_educativos as ne','ne.id','=','personas.id_niveleducativo')
+        ->join('estados_civiles as ec','ec.id','=','personas.id_estado_civil')
+        ->where('personas.id_persona','=',$id_persona)
+        ->select('personas.*',
+            'gf.id',
+            'gn.cod_genero',
+            'td.codigo_doc',
+            'ec.estado_civil',
+            'oc.ocupacion',
+            'ne.nivel_educativo',
+            'pt.parentesco')
+            ->first();
+            
+        return view('censoweb.personas.create', compact('personas',
             'grupofamiliar',
             'generos',
             'tiposdocumento',
@@ -164,9 +178,9 @@ class PersonaController extends Controller
             'estadosciviles',
             'personas'
             ));
-
+            
         
-    }
+    }*/
 
     /**
      * Update the specified resource in storage.
@@ -177,7 +191,7 @@ class PersonaController extends Controller
      */
     public function update(Request $request)
     {
-        dd($personas->id_persona);
+        
         //$personas = Persona::find($id)->update($request->all());
         //return redirect()->route('censo.index');
     }

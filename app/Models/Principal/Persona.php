@@ -8,6 +8,7 @@ class Persona extends Model
 {
     protected $table = 'personas';
     protected $primarykey = 'id_persona';
+    
     protected $fillable = [
     	'id_tipo_doc',
     	'identificacion',
@@ -25,13 +26,14 @@ class Persona extends Model
         'id_ocupacion',
         'id_parentesco',
         'fecha_nacimiento',
-        'edad'
+        'edad',
     ];
 
 
     public function grupo_familiar()
     {
-        return $this->belongsto('App\Models\Principal\Grupo_Familiar','id_persona');
+        //return $this->belongsto('App\Models\Principal\Grupo_Familiar');
+        return $this->belongsto(Grupo_Familiar::class);
     }
 
     public function tipo_doc()

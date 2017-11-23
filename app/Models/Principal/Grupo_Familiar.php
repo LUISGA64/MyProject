@@ -29,7 +29,8 @@ class Grupo_Familiar extends Model
     public function persona()
     {        
         //return $this->hasmany(Persona::class, 'id_persona','id');    id_persona
-        return $this->hasMany('App\Models\Principal\Persona','grupofamiliar_id');
+        //return $this->hasMany(Persona::Class,'grupofamiliar_id');
+        return $this->hasMany(Persona::class);
     }
 
     public function tipo_vivienda()

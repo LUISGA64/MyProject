@@ -32,25 +32,15 @@ class CreateGruposFamiliares extends Migration
             $table->timestamps();
 
             $table->foreign('id_tipo_vivienda')->references('id')->on('tipos_vivienda')->onDelete('cascade')->onUpdate('cascade');
-
             $table->foreign('id_material_paredes')->references('id')->on('material_paredes')->onDelete('cascade')->onUpdate('cascade');
-
             $table->foreign('id_material_pisos')->references('id')->on('material_pisos')->onDelete('cascade')->onUpdate('cascade');
-
             $table->foreign('id_material_techo')->references('id')->on('materiales_techo')->onDelete('cascade')->onUpdate('cascade');
-
             $table->foreign('id_tipo_actividad')->references('id')->on('tipo_actividades')->onDelete('cascade')->onUpdate('cascade');
-
             $table->foreign('id_consumo_agua')->references('id')->on('consumo_agua')->onDelete('cascade')->onUpdate('cascade');
-
             $table->foreign('id_tipo_alumbrado')->references('id')->on('tipos_alumbrado')->onDelete('cascade')->onUpdate('cascade');
-
             $table->foreign('id_elimina_excretas')->references('id')->on('eliminar_excretas')->onDelete('cascade')->onUpdate('cascade');
-
             $table->foreign('id_aguas_servidas')->references('id')->on('aguas_servidas')->onDelete('cascade')->onUpdate('cascade');
-
             $table->foreign('id_vector_viviendas')->references('id')->on('vectores_vivienda')->onDelete('cascade')->onUpdate('cascade');
-
             $table->foreign('id_riesgo_vivienda')->references('id')->on('riesgos_vivienda')->onDelete('cascade')->onUpdate('cascade');
         });
     }

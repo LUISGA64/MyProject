@@ -24,7 +24,7 @@ class PersonaCreateRequest extends FormRequest
     public function rules()
     {
         return [
-        'id_tipo_doc' => ,
+        'id_tipo_doc' ,
         'identificacion',
         'nombre_1',
         'nombre_2',
