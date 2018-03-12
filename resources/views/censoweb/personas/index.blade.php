@@ -40,7 +40,7 @@ Comuneros
 						<td>
 							<a class="btn btn-warning btn-sm" href="{{ route('persona-censoweb-edit',$persona->id_persona) }}"> <span class="btn-label">  <i class="fa fa-edit"> Editar</i></span></a>
 
-							<a class="btn btn-info btn-sm" href="#"> <span class="btn-label">  <i class="fa fa-book"> Aval</i></span></a>
+							<a class="btn btn-info btn-sm" href="{{ route('aval-create', $persona->id_persona) }}"> <span class="btn-label">  <i class="fa fa-book"> Aval</i></span></a>
 
 						</td>
 					</tr>

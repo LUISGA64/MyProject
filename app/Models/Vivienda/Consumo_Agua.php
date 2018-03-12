@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Consumo_Agua extends Model
 {
     protected $table = 'consumo_agua';
-    protected $primarykey = 'id';
+    protected $primaryKey = 'id';
     protected $fillable = ['consumo_agua'];
 
     public function grupo_familiar()

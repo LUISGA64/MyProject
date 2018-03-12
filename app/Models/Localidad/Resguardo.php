@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Resguardo extends Model
 {
     protected $table = 'resguardos';
-    protected $primarykey = 'id';
+    protected $primaryKey = 'id';
     protected $fillable = [
     'resguardo',
     'tipodoc_resg',
@@ -28,5 +28,15 @@ class Resguardo extends Model
     public function grupo_familiar()
     {
         return $this->belongsTo('App\Models\Principal\Grupo_Familiar');
+    }
+
+    public function cargos ()
+    {
+        return $this->hasMany('App\Models\Catalogos\Cargos');
+    }
+
+    public function aval()
+    {
+        return $this->hasOne(Aval::class);
     }
 }

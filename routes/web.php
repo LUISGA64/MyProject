@@ -29,17 +29,14 @@ Route::get('grupo-familiar-create', 'Principal\CensoController@create')->name('g
 
 /*personas*/
 Route::get('personas-grupofamiliar', 'Principal\PersonaController@index')->name('personagrupo-familiar.index');
-Route::get('grupo-familiar/{id}/persona/new', 'Principal\PersonaController@create')->name('personagrupo-familiar.new');
-Route::POST('grupo-familiar/{id}/persona/store', 'Principal\PersonaController@store')->name('idGrupoFamiliar');
+Route::get('persona-censoweb-create/{id}/persona/new', 'Principal\PersonaController@create')->name('personagrupo-familiar.new');
+Route::POST('persona-censoweb/{id}/persona/store', 'Principal\PersonaController@store')->name('idGrupoFamiliar');
 Route::get('persona-censoweb/{id}/edit', 'Principal\PersonaController@edit')->name('persona-censoweb-edit');
-Route::PUT('persona-censoweb/{id}/update', 'Principal\CensoController@update')->name('persona-censoweb-update');
+Route::PUT('persona-censoweb/{id}/update', 'Principal\PersonaController@update')->name('persona-censoweb-update');
 //Route::resource('personas', 'Principal\PersonaController');
-
-
 
 /*catalogo actividades*/
 Route::get('/censo/{id}/actividades', 'Principal\CensoController@byactividad');
-
 
 /*Ruta Resguardo Indigena*/
 //Route::resource('resguardo-indigena', 'Principal\ResguardoController');
@@ -48,3 +45,29 @@ Route::get('resguardo-indigena-index','Principal\ResguardoController@index')->na
 Route::POST('resguardo-indigena-store','Principal\ResguardoController@store')->name('resguardo-store');
 Route::get('resguardo-indigena-edit/{id}', 'Principal\ResguardoController@edit')->name('resguardo-edit');
 Route::PUT('resguardo-indigena-update/{id}', 'Principal\ResguardoController@update')->name('resguardo-update');
+
+
+/*Cabildo Controller*/
+//Route::get('cabildo-indigena-create','Principal\CabildoController@create')->name('cabildo-create');
+//Route::get('cabildo-indigena-index','Principal\CabildoController@index')->name('cabildo-index');
+
+Route::resource('cabildo','Principal\CabildoController');
+
+/// Avales del Cabildo
+Route::get('resguardo-aval-index','Principal\AvalController@index')->name('aval-index');
+Route::get('resguardo-aval-{id}-create', 'Principal\AvalController@create')->name('aval-create');
+Route::POST('resguardo-aval-store', 'Principal\AvalController@store')->name('aval-store');
+Route::get('resguardo/aval/show', 'Principal\AvalController@show')->name('aval.show');
+Route::get('descargar-{id}-aval', 'Principal\AvalController@avalPdf')->name('aval-pdf');
+Route::get('resguardo-aval-excel', 'Principal\AvalController@excel')->name('aval-excel');
+
+
+
+Route::get('pdf', function(){
+	$pdf = PDF::loadView('censoweb.aval.pdf');
+	return $pdf->download('archivo.pdf');
+});
+
+//Reportes
+Route::get('reporte-viviendas','Principal\ReportController@viviendas')->name('report-viviendas');
+Route::get('reporte-pisos','Principal\ReportController@pisos')->name('report-pisos');

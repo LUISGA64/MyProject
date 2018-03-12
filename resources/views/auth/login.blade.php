@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
    @section('htmlheader_title')
-		Login
+        Ingresar
    @endsection
-    
+    <link href="{{ asset('login.css') }}" rel="stylesheet">
     <!-- Bootstrap -->
     <link href="{{ asset("css/bootstrap.min.css") }}" rel="stylesheet">
     <!-- Font Awesome -->
@@ -20,41 +20,60 @@
 
 </head>
 
-<body class="login" >
+<body style="background-size: cover;">
+
+<video autoplay="autoplay" id="video_background" preload="auto" style="
+    min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  position: fixed;    
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%); 
+  z-index: -100;
+  background-size: cover;" />
+  <source src="{{ asset('video/Keyboard.mp4') }}" type="video/mp4" />
+</video/>
+
 <div>
     <div class="login_wrapper">
         <div class="animate form login_form">
-            <section class="login_content">
-				{!! BootForm::open(['url' => url('/login'), 'method' => 'post']) !!}
-                    
-				<h1>Acceso CensoWeb</h1>
-			
-				{!! BootForm::email('email', 'Email', old('email'), ['placeholder' => 'Email', 'afterInput' => '<span>test</span>'] ) !!}
-			
-				{!! BootForm::password('password', 'Password', ['placeholder' => 'Password']) !!}
-				
-				<div>
-					{!! BootForm::submit('Log in', ['class' => 'btn btn-success submit ']) !!}
-					<a class="reset_pass" href="{{  url('/password/reset') }}">Olvido su Password ?</a>
-				</div>
-                    
-				<div class="clearfix"></div>
-                    
-				<div class="separator">
-					<p class="change_link">
-						<a href="{{ url('/register') }}" class="to_register"> Crear Cuenta </a>
-					</p>
+            <div style="text-align: center; color: #2E4053"><h1><i class="fa fa-paw"></i> Censo Web</h1></div>
+            <div class="x_panel" style="background-color: #EBEDEF">
+                {!! Form::open(['url' => url('/login'), 'method' => 'post']) !!}
+                <br>
+                <div style="text-align: center;">
+                    {!! Form::label('email', 'Correo Electrónico') !!}
+                </div>
+                {!! Form::email('email',null,['placeholder' =>'Correo Electrónico', 'class' => 'form-control']) !!}
+            
+                
+                <div style="text-align: center;">
+                    {!! Form::label('password','Contraseña') !!}
+                </div>
+                {!! Form::password('password',['class' => 'form-control','placeholder' => 'Contraseña']) !!}
+                
+                
+                <div class="modal-footer">
+                    <div class="pull-left">
+                    <a href="{{ url('/register') }}" class="to_register"> Crear Cuenta </a>
+                    {{-- <a class="reset_pass" href="{{  url('/password/reset') }}">Olvido su Password ?</a> --}}
+                </div>
+                <div class="pull-right">
+                    {!! BootForm::submit('Ingresar', ['class' => 'btn btn-success submit ']) !!}
+                </div>
+
+                </div> 
+                <div class="separator">
+                    <div class="clearfix"></div>
+                    <div style="text-align: right;">
                         
-					<div class="clearfix"></div>
-					<br />
-                        
-					<div>
-						<h1><i class="fa fa-paw"></i> Censo Web</h1>
-						<p>©2016 Derechos Reservados. Luis Gabriel Quirá Mazabuel. Terminos y Condiciones</p>
-					</div>
-				</div>
-				{!! BootForm::close() !!}
-            </section>
+                        <p>Luis Gabriel Quirá Mazabuel</p>
+                    </div>
+                </div>
+                {!! Form::close() !!}
+            </div>
         </div>
     </div>
 </div>

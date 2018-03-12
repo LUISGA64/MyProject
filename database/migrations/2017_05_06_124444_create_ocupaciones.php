@@ -14,7 +14,7 @@ class CreateOcupaciones extends Migration
     public function up()
     {
         Schema::create('ocupaciones', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('ocupaciones_id');
             $table->string('codigo_ocp')->unique();
             $table->string('ocupacion');
             $table->timestamps();

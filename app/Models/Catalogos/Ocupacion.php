@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Ocupacion extends Model
 {
     protected $table = 'ocupaciones';
-    protected $primarykey = 'id';
+    protected $primaryKey = 'ocupaciones_id';
     protected $fillable = ['codigo_ocp', 'ocupacion'];
 
     public function persona()

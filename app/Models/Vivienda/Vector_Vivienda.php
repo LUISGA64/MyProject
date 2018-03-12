@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Vector_Vivienda extends Model
 {
     protected $table = 'vectores_vivienda';
-    protected $primarykey = 'id';
+    protected $primaryKey = 'id';
     protected $fillable = ['vector_vivienda'];
 
    public function grupo_familiar()

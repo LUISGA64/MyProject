@@ -3,6 +3,7 @@
     namespace App\Http\Controllers\Principal;
 
 
+    use Alert;
     use App\Http\Controllers\Controller;
     use App\Models\Catalogos\Estado_Civil;
     use App\Models\Catalogos\Genero;
@@ -21,28 +22,15 @@
     use App\Models\Vivienda\Tipo_Alumbrado;
     use App\Models\Vivienda\Tipo_Vivienda;
     use App\Models\Vivienda\Vector_Vivienda;
-    use App\Models\Principal\Persona;
-    use Illuminate\Http\Request;
     use Datatables;
-    use Carbon\Carbon;
-    use Alert;
     use DB;
-
+    use Illuminate\Http\Request;
 
 
     class CensoController extends Controller{
 
 
    
-        /*public function getIndex()
-        {
-            return view('censoweb.censo.index');
-        }*/
-
-
-        /*
-        Function JavaScript para Combo del tipo actividad
-        */
         public function byactividad($id)
         {
             return Tipo_Actividad::where('id_actividad_economica',$id)->get();
@@ -62,10 +50,9 @@
         'personas.nombre_2',
         'personas.apellido_1',
         'personas.apellido_2')
-        ->where('personas.cabeza_familia', '=', 'T')->get();
+        ->where('personas.cabeza_familia', '=', 'T')
+        ->get();
         
-
-        //dd($grupos);
         return view('censoweb.censo.index', compact('grupos'));
 
         }
@@ -133,13 +120,13 @@
         $grupo_familiar->id_material_pisos = $request->mat_piso;
         $grupo_familiar->id_material_techo = $request->mat_techo;
         $grupo_familiar->id_tipo_actividad = $request->id_tipact;
+        $grupo_familiar->id_acteconomica = $request->id_acteconomica;
         $grupo_familiar->id_consumo_agua = $request->consumoagua;
         $grupo_familiar->id_elimina_excretas = $request->excreta;
         $grupo_familiar->id_aguas_servidas = $request->aguaservidas;
         $grupo_familiar->id_vector_viviendas = $request->vectorvivienda;
         $grupo_familiar->id_riesgo_vivienda = $request->riesgovivienda;
         $grupo_familiar->id_tipo_alumbrado= $request->alumbrado;
-        //dd($grupo_familiar);
         $grupo_familiar->save();
         Alert::success('Ficha Creada con Exito!');
         return redirect()->route('personagrupo-familiar.new',[$grupo_familiar->id]);
@@ -149,8 +136,8 @@
     {
         $grupos = DB::table('grupos_familiares')
         ->join('personas', 'grupos_familiares.id', '=', 'personas.grupofamiliar_id')
-        ->join('generos', 'personas.id_genero', '=', 'generos.id')
-        ->join('parentescos', 'personas.id_parentesco', '=', 'parentescos.id')
+        ->join('generos', 'personas.genero_id', '=', 'generos.generos_id')
+        ->join('parentescos', 'personas.parentesco_id', '=', 'parentescos.parentescos_id')
         ->select(
         'personas.id_persona',
         'personas.nombre_1',
@@ -164,7 +151,7 @@
         'parentescos.parentesco')
         ->where('personas.grupofamiliar_id', '=',$id)
         ->orderBy('id_persona', 'asc')
-        ->paginate(7);
+        ->paginate(5);
 
         return view('censoweb.censo.show', compact('grupos','id'));
     }
@@ -205,16 +192,39 @@
 
     public function update(Request $request, $id)
     {
-        $grupos = Grupo_Familiar::find($id)->update($request->all());
+        $this->validate($request, [
+        'direccion'             =>  'required',
+        'zona'                  =>  'required'
+        ]);
+
+        $grupos = Grupo_Familiar::findOrFail($id);
+        $grupos->direccion = $request->direccion;
+        $grupos->zona = $request->zona;
+        $grupos->id_tipo_vivienda = $request->tipo_vivienda;
+        $grupos->id_material_paredes = $request->mat_paredes;
+        $grupos->id_material_pisos = $request->mat_piso;
+        $grupos->id_material_techo = $request->mat_techo;
+        $grupos->id_tipo_actividad = $request->id_tipact;
+        $grupos->id_consumo_agua = $request->consumoagua;
+        $grupos->id_elimina_excretas = $request->excreta;
+        $grupos->id_aguas_servidas = $request->aguaservidas;
+        $grupos->id_vector_viviendas = $request->vectorvivienda;
+        $grupos->id_riesgo_vivienda = $request->riesgovivienda;
+        $grupos->id_tipo_alumbrado= $request->alumbrado;
+        $grupos->save();
         Alert::success('Ficha Modificada con Exito!');
         return redirect()->route('censo.index');
-        //dd($request);
-        //return redirect()->route('personagrupo-familiar.new',[$grupo_familiar->id]);
     }
 
     public function destroy($id)
     {
     //
+    }
+
+
+    public function prueba()
+    {
+        return view('censoweb.censo.wizard');
     }
 
 }

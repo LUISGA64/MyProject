@@ -1,37 +1,37 @@
 @extends('layouts.blank')
 
-@push('stylesheets')
-<!-- Example -->
-<!--<link href=" <link href="{{ asset("css/myFile.min.css") }}" rel="stylesheet">" rel="stylesheet">-->
-@endpush
-
+@section('htmlheader_title')
+  Inicio
+@endsection
 
 
 @section('main_container')
 
+
 <!-- page content -->
 <div class="right_col" role="main">
-	
-	<div class="">
-		{{-- <script type="text/javascript" src="{{ asset('/censoweb/act_econ.js') }}"></script> --}}
-		<h1 style="text-align: center; color: #3EB2AB">Listado Censal</h1>
-		{{-- <img style="display: block; margin: auto;" src="/img/DocResaguardo/{{ $resg->logo_resg }}" /> --}}
-
-
-
+	<div class="row" style="margin-top: 60px;">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				{!! Charts::styles() !!}
+			</head>
+			<body>
+				<!-- Main Application (Can be VueJS or other JS framework) -->
+				<div class="app">
+					<center>
+						{!! $chart->html() !!}
+					</center>
+				</div>
+				<!-- End Of Main Application -->
+				{!! Charts::scripts() !!}
+				{!! $chart->script() !!}
+			</body>
+			</div>
+		</div>
 	</div>
+	
 </div>
 
-
-
-
-
-
-<footer>
-	<div class="pull-right">
-		<h3><strong>Censo Web</strong></h3>
-	</div>
-	<div class="clearfix"></div>
-</footer>
-<!-- /footer content -->
 @endsection
+
+

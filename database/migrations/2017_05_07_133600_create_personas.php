@@ -15,8 +15,9 @@ class CreatePersonas extends Migration
     {
         Schema::create('personas', function (Blueprint $table) {
             $table->increments('id_persona');
-            $table->integer('id_tipo_doc')->unsigned();
+            $table->integer('tipodoc_id')->unsigned();
             $table->string('identificacion');
+            $table->string('expedicion');
             $table->string('nombre_1');
             $table->string('nombre_2');
             $table->string('apellido_1');
@@ -25,22 +26,25 @@ class CreatePersonas extends Migration
             $table->char('edad',3);
             $table->string('telefono');
             $table->string('direccion');
-            $table->integer('id_genero')->unsigned();
-            $table->integer('id_estado_civil')->unsigned();
+            $table->integer('genero_id')->unsigned();
+            $table->integer('estadocivil_id')->unsigned();
             $table->string('cabeza_familia');
-            $table->integer('id_niveleducativo')->unsigned();
+            $table->integer('nivelEducativo_id')->unsigned();
             $table->integer('grupofamiliar_id')->unsigned();
-            $table->integer('id_ocupacion')->unsigned();
-            $table->integer('id_parentesco')->unsigned();
+            $table->integer('ocupacion_id')->unsigned();
+            $table->integer('parentesco_id')->unsigned();
+            $table->integer('vereda_id')->unsigned();
+            $table->string('fullName');
             $table->timestamps();
 
-            $table->foreign('id_tipo_doc')->references('id')->on('tipo_docs')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('id_genero')->references('id')->on('generos')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('id_estado_civil')->references('id')->on('estados_civiles')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('id_niveleducativo')->references('id')->on('niveles_educativos')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('tipodoc_id')->references('tipodocs_id')->on('tipo_docs')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('genero_id')->references('generos_id')->on('generos')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('estadocivil_id')->references('estadosciviles_id')->on('estados_civiles')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('nivelEducativo_id')->references('nivelesEducativos_id')->on('niveles_educativos')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('grupofamiliar_id')->references('id')->on('grupos_familiares')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('id_ocupacion')->references('id')->on('ocupaciones')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('id_parentesco')->references('id')->on('parentescos')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('ocupacion_id')->references('ocupaciones_id')->on('ocupaciones')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('parentesco_id')->references('parentescos_id')->on('parentescos')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('vereda_id')->references('vereda_id')->on('veredas')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

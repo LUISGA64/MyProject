@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Material_Piso extends Model
 {
     protected $table = 'material_pisos';
-    protected $primarikey = 'id';
+    protected $primariKey = 'id';
     protected $fillable = ['material_piso'];
 
     

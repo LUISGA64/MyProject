@@ -43,9 +43,20 @@ return [
 
     'disks' => [
 
+        'web' => [
+        'driver' => 'local',
+        'root' => public_path('web'),
+        ],
+
+        'censo' => [
+            'driver' => 'local',
+            'root' => storage_path('censo'),
+            'visibility' => 'public',
+        ],
+
         'local' => [
             'driver' => 'local',
-            'root' => storage_path('app'),
+            'root' => public_path('censo'),
         ],
 
         'public' => [

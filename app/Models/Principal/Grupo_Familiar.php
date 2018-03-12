@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Grupo_Familiar extends Model
 {
     protected $table = 'grupos_familiares';
-    protected $primarykey = 'id';
+    protected $primaryKey = 'id';
     protected $fillable = [
     	'numero_ficha',
     	'direccion',
@@ -17,6 +17,7 @@ class Grupo_Familiar extends Model
     	'id_material_pisos',
     	'id_material_techo',
     	'id_tipo_actividad',
+        'id_acteconomica',
     	'id_consumo_agua',
     	'id_tipo_alumbrado',
     	'id_elimina_excretas',
@@ -50,7 +51,7 @@ class Grupo_Familiar extends Model
 
     public function material_techo()
     {
-    	return $this->hasMany('App\Models\Vivienda\Material_Techo');
+        return $this->hasOne('App\Models\Vivienda\Material_Techo');
     }
 
     public function tipo_actividad()
@@ -97,6 +98,11 @@ class Grupo_Familiar extends Model
     public function tipo_alumbrado()
     {
         return $this->hasmany('App\Models\Vivienda\Tipo_Alumbrado');
+    }
+
+    public function actividad_economica()
+    {
+        return $this->hasOne('App\Models\Economia\Actividad_Economica');
     }
 
 }

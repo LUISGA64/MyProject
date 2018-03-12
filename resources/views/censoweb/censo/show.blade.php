@@ -1,14 +1,9 @@
 @extends('layouts.blank')
 
-@push('stylesheets')
-<!-- Example -->
-<!--<link href=" <link href="{{ asset("css/myFile.min.css") }}" rel="stylesheet">" rel="stylesheet">-->
-@endpush
 
 @section('htmlheader_title')
 Listado Comuneros
 @endsection
-
 
 @section('main_container')
 <div class="right_col" role="main">
@@ -19,11 +14,11 @@ Listado Comuneros
         <caption><h3>Ficha Familiar Número: <strong>{{ $id }}</strong> </h3></caption>
         <thead>
           <tr style="background-color: #17A589; color: #FDFEFE">
-            <th style="text-align: center; width: 20%"><h4>Familiar</h4></th>
-            <th style="text-align: center; width: 20%"><h4>Sexo</h4></th>
-            <th style="text-align: center; width: 20%"><h4>Dirección</h4></th>
-            <th style="text-align: center; width: 20%"><h4>Teléfono</h4></th>
-            <th style="text-align: center; width: 20%"><h4>Parentesco</h4></th>
+            <th style="text-align: center; width: 20%">Familiar</th>
+            <th style="text-align: center; width: 20%">Sexo</th>
+            <th style="text-align: center; width: 20%">Dirección</th>
+            <th style="text-align: center; width: 20%">Teléfono</th>
+            <th style="text-align: center; width: 20%">Parentesco</th>
           </tr>
         </thead>
         <tbody>
@@ -44,7 +39,7 @@ Listado Comuneros
     <legend class="legendStyle" style="margin-top: 1px; margin-bottom: 12px; margin-left: 5px; color: #26B99A"></legend>
   </div>
   <div>
-    <a class="btn btn-info btn-close btn-lg" style="margin-left: 15px" href="{{ route('grupo-familiar-index') }}"><span> <i class="fa fa-home"> Volver</i></span></a>
+    <a class="btn btn-info btn-close" style="margin-left: 15px" href="{{ route('grupo-familiar-index') }}"><span> <i class="fa fa-home"> Volver</i></span></a>
   </div>
 </div>
 @endsection

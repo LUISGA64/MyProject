@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Riesgo_Vivienda extends Model
 {
     protected $table = 'riesgos_vivienda';
-    protected $primarykey = 'id';
+    protected $primaryKey = 'id';
     protected $fillable = ['riesgo'];
 
     public function grupo_familiar()

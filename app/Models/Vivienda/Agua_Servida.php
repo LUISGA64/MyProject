@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Agua_Servida extends Model
 {
     protected $table = 'aguas_servidas';
-    protected $primarykey = 'id';
+    protected $primaryKey = 'id';
     protected $fillable = ['det_aguaservidas'];
 
     

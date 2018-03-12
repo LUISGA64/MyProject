@@ -7,33 +7,36 @@ use Illuminate\Database\Eloquent\Model;
 class Persona extends Model
 {
     protected $table = 'personas';
-    protected $primarykey = 'id_persona';
+    protected $primaryKey = 'id_persona';
     
     protected $fillable = [
-    	'id_tipo_doc',
+    	'tipodoc_id',
     	'identificacion',
+        'expedicion',
     	'nombre_1',
     	'nombre_2',
     	'apellido_1',
     	'apellido_2',
     	'telefono',
     	'direccion',
-    	'id_genero',
+    	'genero_id',
     	'id_estado_civil',
     	'cabeza_familia',
-    	'id_niveleducativo',
+    	'nivelEducativo_id',
     	'grupofamiliar_id',
-        'id_ocupacion',
-        'id_parentesco',
+        'ocupacion_id',
+        'parentesco_id',
         'fecha_nacimiento',
         'edad',
+        'vereda_id',
+        'fullName'
     ];
 
 
     public function grupo_familiar()
     {
         //return $this->belongsto('App\Models\Principal\Grupo_Familiar');
-        return $this->belongsto(Grupo_Familiar::class);
+        return $this->belongsto(Grupo_Familiar::class,'id_person');
     }
 
     public function tipo_doc()
@@ -41,9 +44,9 @@ class Persona extends Model
     	return $this->hasOne('App\Models\Catalogos\Tipo_Doc');
     }
 
-    public function genero()
+    public function generos()
     {
-    	return $this->hasOne('App\Models\Catalogos\Genero');
+    	return $this->belongsto('App\Models\Catalogos\Genero');
     }
 
     public function estado_civil()
@@ -64,6 +67,16 @@ class Persona extends Model
     public function parentesco()
     {
     	return $this->hasOne('App\Models\Catalogos\Parentesco');
+    }
+
+    public function vereda()
+    {
+        return $this->hasOne('App\Models\Localidad\Vereda');
+    }
+
+    public function aval()
+    {
+        return $this->hasMany(Aval::class, persona_id);
     }
 
 }

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Parentesco extends Model
 {
     protected $table = 'parentescos';
-    protected $primarykey = 'id';
+    protected $primaryKey = 'parentescos_id';
     protected $fillable = ['parentesco'];
 
     public function persona()

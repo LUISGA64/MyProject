@@ -57,6 +57,7 @@ Grupo Familiar
                 <a class="btn btn-success btn-sm" href="{{ route('personagrupo-familiar.new',[$grupo->id]) }}"> <span class="btn-label">  <i class="fa fa-user-plus"> Usuario</i></span></a>
 
                 <a class="btn btn-responsive btn-info btn-sm" href="{{ route('grupo-familiar.show',[$grupo->id]) }}"><span class="btn-label"><i class="fa fa-users"> Familiares</i></span></a>
+                
               </td>
               </tr>
             @endforeach

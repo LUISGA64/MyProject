@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Eliminar_Excretas extends Model
 {
     protected $table = 'eliminar_excretas';
-    protected $primarykey = 'id';
+    protected $primaryKey = 'id';
     protected $fillable = ['eliminar_excretas'];
 
     public function grupo_familiar()

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -25,6 +25,8 @@
         <link href="{{ asset('ui/jquery-ui.css') }}" rel="stylesheet">
         <link href="{{ asset('ui/jquery-ui.theme.css') }}" rel="stylesheet">
         <link href="{{ asset('datatable/css/dataTables.bootstrap.css') }}" rel="stylesheet"> --}}
+        
+
         <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
         @stack('stylesheets')
 
@@ -64,9 +66,19 @@
         @include('sweet::alert')
 
         {{-- Archivos para las graficas --}}
-        <script type="text/javascript" src="{{ asset('/js/highcharts.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('/js/graficas.js') }}"></script>
+        
         @stack('scripts')
 
     </body>
+
+    <footer style="background-color: #34495E">
+    <div class="pull-left">
+        <strong>Luis Gabriel Quirá</strong>
+    </div>
+
+    <div class="pull-right" style="color: #3EB2AB">
+        <strong>Censo Web</strong>
+    </div>
+    <div class="clearfix"></div>
+</footer>
 </html>

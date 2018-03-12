@@ -14,4 +14,9 @@ class Actividad_Economica extends Model
     {
     	return $this->hasOne('App\Models\Economia\Tipo_Actividad');
     }
+
+    public function grupo_familiar()
+    {
+    	return $this->belongsTo('App\Models\Principal\Grupo_Familiar');
+    }
 }

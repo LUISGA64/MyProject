@@ -23,6 +23,7 @@ class CreateGruposFamiliares extends Migration
             $table->integer('id_material_pisos')->unsigned();
             $table->integer('id_material_techo')->unsigned();
             $table->integer('id_tipo_actividad')->unsigned();
+            $table->integer('id_acteconomica')->unsigned();
             $table->integer('id_consumo_agua')->unsigned();
             $table->integer('id_tipo_alumbrado')->unsigned();
             $table->integer('id_elimina_excretas')->unsigned();
@@ -42,6 +43,7 @@ class CreateGruposFamiliares extends Migration
             $table->foreign('id_aguas_servidas')->references('id')->on('aguas_servidas')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('id_vector_viviendas')->references('id')->on('vectores_vivienda')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('id_riesgo_vivienda')->references('id')->on('riesgos_vivienda')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_acteconomica')->references('id')->on('actividades_economicas')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

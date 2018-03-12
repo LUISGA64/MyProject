@@ -3,11 +3,12 @@
 namespace App\Models\Vivienda;
 
 use Illuminate\Database\Eloquent\Model;
+use Models\Principal\Grupo_Familiar;
 
 class Material_Techo extends Model
 {
     protected $table = 'materiales_techo';
-    protected $primarykey = 'id';
+    protected $primaryKey = 'id';
     protected $fillable = ['material_techo'];
 
 

@@ -168,6 +168,9 @@ return [
         Acoustep\EntrustGui\EntrustGuiServiceProvider::class,
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
         Yajra\Datatables\DatatablesServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
+        ConsoleTVs\Charts\ChartsServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
     ],
 
     /*
@@ -223,7 +226,9 @@ return [
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
         'Alert' => UxWeb\SweetAlert\SweetAlert::class,
         'Datatables' => Yajra\Datatables\Facades\Datatable::class,
-
+        'PDF' => Barryvdh\DomPDF\Facade::class,
+        'Charts' => ConsoleTVs\Charts\Facades\Charts::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ],
 
 ];

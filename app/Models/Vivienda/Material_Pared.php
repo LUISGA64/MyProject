@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Material_Pared extends Model
 {
     protected $table = 'material_paredes';
-    protected $primarykey = 'id';
+    protected $primaryKey = 'id';
     protected $fillable = ['material_pared'];
 
     public function grupo_familiar()

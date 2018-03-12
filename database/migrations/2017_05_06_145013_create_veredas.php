@@ -14,10 +14,11 @@ class CreateVeredas extends Migration
     public function up()
     {
         Schema::create('veredas', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('vereda_id');
             $table->string('vereda');
             $table->integer('id_resguardo')->unsigned();
             $table->timestamps();
+            
             $table->foreign('id_resguardo')->references('id')->on('resguardos');
         });
     }

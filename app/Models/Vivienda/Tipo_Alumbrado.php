@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Tipo_Alumbrado extends Model
 {
     protected $table = 'tipos_alumbrado';
-    protected $primarykey = 'id';
+    protected $primaryKey = 'id';
     protected $fillable = ['tipo_alumbrado'];
 
     public function grupo_familiar()

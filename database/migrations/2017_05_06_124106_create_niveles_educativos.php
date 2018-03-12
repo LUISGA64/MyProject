@@ -14,7 +14,7 @@ class CreateNivelesEducativos extends Migration
     public function up()
     {
         Schema::create('niveles_educativos', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('nivelesEducativos_id');
             $table->string('nivel_educativo');
             $table->timestamps();
         });
