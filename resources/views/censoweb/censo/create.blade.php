@@ -23,26 +23,27 @@ Registro Grupo Familiar
           <div class="col-xs-12 col-md-12 col-sm-12 col-lg-12">
             <div class="col-md-12 col-sm-12 col-xs-12 form-group">
               {{-- Ficha familiar --}}
-              <div class="col-md-3 col-md-3 col-xs-12 col-sm-6 col-md-8 form-group has-feedback" >
+              {{-- <div class="col-md-3 col-md-3 col-xs-12 col-sm-6 col-md-8 form-group has-feedback" >
                 {!!Form::label('ficha', 'Número Ficha')!!}
                 {!! Form::text('ficha', null, array('placeholder'=>'Número Ficha', 'class'=>'form-control has-feedback-left')) !!}
                 <span class="fa fa-location-arrow form-control-feedback left" ></span>
-              </div>
+              </div> --}}
               {{-- Direccion --}}
               <div class="col-md-3 col-md-3 col-xs-12 col-sm-6 col-md-8 form-group has-feedback" >
                 {!!Form::label('direccion', 'Dirección')!!}
-                {!! Form::text('direccion', null, array('placeholder'=>'Dirección', 'class'=>'form-control has-feedback-left', 'style' =>'color: #0B3861')) !!}
+                {!! Form::text('direccion', null, array('placeholder'=>'Dirección', 'class'=>'form-control has-feedback-left', 'style' =>'color: #0B3861', old('direccion'))) !!}
                 <span class="fa fa-location-arrow form-control-feedback left" ></span>
               </div>
               {{-- Tipo de Vivienda --}}
               <div class="col-md-3 col-md-3 col-xs-12 col-sm-6 col-md-8 form-group has-feedback">
                 {!!Form::label('tipo_vivienda', 'Tipo Vivienda')!!}
-                <select select name="tipo_vivienda" id="tipo_vivienda" class="form-control">
+                {{-- <select select name="tipo_vivienda" id="tipo_vivienda" class="form-control" >
                   <option value="">Tipo Vivienda..</option>
                   @foreach ($tiposvivienda as $tipvivienda)
                   <option value="{{ $tipvivienda['id'] }}">{{ $tipvivienda['tipo_vivienda'] }}</option>
                   @endforeach
-                </select>
+                </select> --}}
+                {!! Form::select('tipo_vivienda', $tiposvivienda->pluck('tipo_vivienda','id'),null, ['class' => 'form-control','old'=>'tipo_vivienda','placeholder'=>'luisga']) !!}
               </div>
               {{-- zONA --}}
               <div class="col-md-3 col-md-3 col-xs-12 col-sm-6 col-md-8 form-group has-feedback">

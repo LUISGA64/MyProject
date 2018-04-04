@@ -96,7 +96,6 @@
     public function store(Request $request)
     {
         $this->validate($request, [
-        'ficha' => 'required|numeric',
         'direccion',
         'zona' => 'required',
         'id_tipo_vivienda',

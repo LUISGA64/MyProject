@@ -71,3 +71,4 @@ Route::get('pdf', function(){
 //Reportes
 Route::get('reporte-viviendas','Principal\ReportController@viviendas')->name('report-viviendas');
 Route::get('reporte-pisos','Principal\ReportController@pisos')->name('report-pisos');
+Route::get('reporte-excel','Principal\ReportController@excel')->name('report-excel');

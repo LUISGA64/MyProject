@@ -14,7 +14,7 @@ Comuneros
 	<div class="">
         <div class="controls-row">
             <div class="pull-right">
-                <a href="{{ route('aval-excel') }}" class="btn btn-default"> <i class="fa fa-file-excel-o" style="color: #1e8a29"></i> Excel </a>
+                {{--<a href="{{ route('aval-excel') }}" class="btn btn-default"> <i class="fa fa-file-excel-o" style="color: #1e8a29"></i> Excel </a>--}}
             </div>
         </div>
 

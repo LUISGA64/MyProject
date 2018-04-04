@@ -190,20 +190,5 @@ class AvalController extends Controller
     }
 
 
-    public function getData() 
-    {
-        $data =  [
-            'quantity'      => '1' ,
-            'description'   => 'some ramdom text',
-            'price'   => '500',
-            'total'     => '500'
-        ];
-        return $data;
-    }
 
-    public function excel()
-    {
-        $censo = Persona::with('grupo_familiar')->get();
-        dd($censo);
-    }
 }

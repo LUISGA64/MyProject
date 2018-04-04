@@ -72,7 +72,7 @@
                             <li>
                                 <a style="color: #3EB2AB" href="{{ route('report-viviendas') }}">Viviendas</a>
                                 <a style="color: #3EB2AB" href="{{ route('report-pisos') }}">Material Pisos
-                                {{-- <a style="color: #3EB2AB" href="{{ route('cabildo.index') }}">Cabildo</a> --}}
+                                <a style="color: #3EB2AB" href="{{ route('report-excel') }}">Censo Excel</a>
                                 {{-- <a style="color: #3EB2AB" href="{{ route('cabildo.index') }}">Cabildo</a> --}}
                             </li>
                         </ul>
