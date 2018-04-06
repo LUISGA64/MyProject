@@ -1,15 +1,15 @@
 <application>
   <component name="PhpInterpreters">
     <interpreters>
-      <interpreter home="C:\xampp\php\php.exe" id="acc2a3b0-ca94-4359-b575-b2ec829a5a0e" name="PHP 7.1" debugger_id="php.debugger.XDebug" />
+      <interpreter home="E:\xampp\php\php.exe" id="acc2a3b0-ca94-4359-b575-b2ec829a5a0e" name="PHP 7.1" debugger_id="php.debugger.XDebug" />
     </interpreters>
   </component>
   <component name="PhpInterpretersPhpInfoCache">
     <phpInfoCache>
       <interpreter name="PHP 7.1">
-        <phpinfo binary_type="PHP" php_cgi="C:\xampp\php\php-cgi.exe" php_cli="C:\xampp\php\php.exe" path_separator=";" version="7.1.1">
+        <phpinfo binary_type="PHP" php_cgi="E:\xampp\php\php-cgi.exe" php_cli="E:\xampp\php\php.exe" path_separator=";" version="7.1.15">
           <additional_php_ini />
-          <configuration_file>C:\xampp\php\php.ini</configuration_file>
+          <configuration_file>E:\xampp\php\php.ini</configuration_file>
           <configuration_options>
             <configuration_option name="SMTP" value="localhost" />
             <configuration_option name="allow_url_fopen" value="1" />
@@ -27,10 +27,10 @@
             <configuration_option name="auto_globals_jit" value="1" />
             <configuration_option name="auto_prepend_file" value="" />
             <configuration_option name="bcmath.scale" value="0" />
-            <configuration_option name="browscap" value="C:\xampp\php\extras\browscap.ini" />
+            <configuration_option name="browscap" value="E:\xampp\php\extras\browscap.ini" />
             <configuration_option name="cli.pager" value="" />
             <configuration_option name="cli.prompt" value="\b \&gt; " />
-            <configuration_option name="curl.cainfo" value="" />
+            <configuration_option name="curl.cainfo" value="E:\xampp\apache\bin\curl-ca-bundle.crt" />
             <configuration_option name="date.default_latitude" value="31.7667" />
             <configuration_option name="date.default_longitude" value="35.2333" />
             <configuration_option name="date.sunrise_zenith" value="90.583333" />
@@ -49,7 +49,7 @@
             <configuration_option name="enable_dl" value="" />
             <configuration_option name="enable_post_data_reading" value="1" />
             <configuration_option name="error_append_string" value="" />
-            <configuration_option name="error_log" value="C:\xampp\php\logs\php_error_log" />
+            <configuration_option name="error_log" value="E:\xampp\php\logs\php_error_log" />
             <configuration_option name="error_prepend_string" value="" />
             <configuration_option name="error_reporting" value="22527" />
             <configuration_option name="exif.decode_jis_intel" value="JIS" />
@@ -59,7 +59,7 @@
             <configuration_option name="exif.encode_jis" value="" />
             <configuration_option name="exif.encode_unicode" value="ISO-8859-15" />
             <configuration_option name="expose_php" value="1" />
-            <configuration_option name="extension_dir" value="C:\xampp\php\ext" />
+            <configuration_option name="extension_dir" value="E:\xampp\php\ext" />
             <configuration_option name="file_uploads" value="1" />
             <configuration_option name="filter.default" value="unsafe_raw" />
             <configuration_option name="filter.default_flags" value="" />
@@ -79,7 +79,7 @@
             <configuration_option name="ignore_repeated_source" value="" />
             <configuration_option name="ignore_user_abort" value="0" />
             <configuration_option name="implicit_flush" value="1" />
-            <configuration_option name="include_path" value="C:\xampp\php\PEAR" />
+            <configuration_option name="include_path" value="E:\xampp\php\PEAR" />
             <configuration_option name="input_encoding" value="" />
             <configuration_option name="internal_encoding" value="" />
             <configuration_option name="log_errors" value="1" />
@@ -128,7 +128,7 @@
             <configuration_option name="mysqlnd.sha256_server_public_key" value="" />
             <configuration_option name="mysqlnd.trace_alloc" value="" />
             <configuration_option name="open_basedir" value="" />
-            <configuration_option name="openssl.cafile" value="" />
+            <configuration_option name="openssl.cafile" value="E:\xampp\apache\bin\curl-ca-bundle.crt" />
             <configuration_option name="openssl.capath" value="" />
             <configuration_option name="output_buffering" value="0" />
             <configuration_option name="output_encoding" value="" />
@@ -141,7 +141,7 @@
             <configuration_option name="phar.require_hash" value="1" />
             <configuration_option name="post_max_size" value="8M" />
             <configuration_option name="precision" value="14" />
-            <configuration_option name="realpath_cache_size" value="16K" />
+            <configuration_option name="realpath_cache_size" value="4096K" />
             <configuration_option name="realpath_cache_ttl" value="120" />
             <configuration_option name="register_argc_argv" value="1" />
             <configuration_option name="report_memleaks" value="1" />
@@ -165,7 +165,7 @@
             <configuration_option name="session.name" value="PHPSESSID" />
             <configuration_option name="session.referer_check" value="" />
             <configuration_option name="session.save_handler" value="files" />
-            <configuration_option name="session.save_path" value="C:\xampp\tmp" />
+            <configuration_option name="session.save_path" value="E:\xampp\tmp" />
             <configuration_option name="session.serialize_handler" value="php" />
             <configuration_option name="session.sid_bits_per_character" value="5" />
             <configuration_option name="session.sid_length" value="26" />
@@ -188,7 +188,7 @@
             <configuration_option name="track_errors" value="" />
             <configuration_option name="unserialize_callback_func" value="" />
             <configuration_option name="upload_max_filesize" value="2M" />
-            <configuration_option name="upload_tmp_dir" value="C:\xampp\tmp" />
+            <configuration_option name="upload_tmp_dir" value="E:\xampp\tmp" />
             <configuration_option name="url_rewriter.hosts" value="" />
             <configuration_option name="url_rewriter.tags" value="form=" />
             <configuration_option name="user_agent" value="" />
