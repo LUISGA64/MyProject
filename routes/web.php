@@ -19,6 +19,7 @@ Route::get('/', 'HomeController@index');
 /*Rutas del Censo*/
 
 Route::resource('censo', 'Principal\CensoController');
+
 //Editar Integrante de la Ficha Familiar
 Route::get('grupo-familiar/{id}/censo/edit', 'Principal\CensoController@edit')->name('personagrupo-familiar.edit');
 //Editar datos de la ficha
@@ -26,6 +27,7 @@ Route::put('/grupo-familiar/{id}/censo/update', 'Principal\CensoController@updat
 Route::get('grupo-familiar/{id}/censo/show', 'Principal\CensoController@show')->name('grupo-familiar.show');
 Route::get('grupo-familiar-index', 'Principal\CensoController@index')->name('grupo-familiar-index');
 Route::get('grupo-familiar-create', 'Principal\CensoController@create')->name('grupo-familiar-create');
+Route::get('grupo-familiar/{id}/censo/print', 'Principal\CensoController@imprimir')->name('grupo-familiar-print');
 
 /*personas*/
 Route::get('personas-grupofamiliar', 'Principal\PersonaController@index')->name('personagrupo-familiar.index');
@@ -48,9 +50,6 @@ Route::PUT('resguardo-indigena-update/{id}', 'Principal\ResguardoController@upda
 
 
 /*Cabildo Controller*/
-//Route::get('cabildo-indigena-create','Principal\CabildoController@create')->name('cabildo-create');
-//Route::get('cabildo-indigena-index','Principal\CabildoController@index')->name('cabildo-index');
-
 Route::resource('cabildo','Principal\CabildoController');
 
 /// Avales del Cabildo

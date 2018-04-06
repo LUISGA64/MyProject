@@ -16,7 +16,7 @@ Comuneros
 		<div class="row">
 			<table class="table table-striped table-bordered table-hover table-condensed table-responsive" id="personas">
 				<thead>
-					<tr style="background-color: #17A589; color: #FDFEFE">
+					<tr style="background-color: #34495E; color: #FDFEFE;">
 						<th>Id</th>
 						<th style="text-align: center">Tipo Documento</th>
 						<th style="text-align: center">Identificación</th>
@@ -38,9 +38,9 @@ Comuneros
 						<td>{{ $persona->fecha_nacimiento }}</td>
 						<td>{{ $persona->edad }}</td>
 						<td>
-							<a class="btn btn-warning btn-sm" href="{{ route('persona-censoweb-edit',$persona->id_persona) }}"> <span class="btn-label">  <i class="fa fa-edit"> Editar</i></span></a>
+							<a class="btn-dark btn-sm" title="Editar" href="{{ route('persona-censoweb-edit',$persona->id_persona) }}"> <span class="btn-label">  <i class="fa fa-edit"> Editar</i></span></a>
 
-							<a class="btn btn-info btn-sm" href="{{ route('aval-create', $persona->id_persona) }}"> <span class="btn-label">  <i class="fa fa-book"> Aval</i></span></a>
+							<a class="btn-success btn-sm" title="Generar Aval" href="{{ route('aval-create', $persona->id_persona) }}"> <span class="btn-label">  <i class="fa fa-book"> Aval</i></span></a>
 
 						</td>
 					</tr>

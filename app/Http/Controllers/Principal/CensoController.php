@@ -22,6 +22,7 @@
     use App\Models\Vivienda\Tipo_Alumbrado;
     use App\Models\Vivienda\Tipo_Vivienda;
     use App\Models\Vivienda\Vector_Vivienda;
+    use Carbon\Carbon;
     use Datatables;
     use DB;
     use Illuminate\Http\Request;
@@ -221,9 +222,31 @@
     }
 
 
-    public function prueba()
+    public function imprimir($id)
     {
-        return view('censoweb.censo.wizard');
+        $y = Carbon::now()->year;
+        $grupos = DB::table('grupos_familiares')
+            ->join('personas', 'grupos_familiares.id', '=', 'personas.grupofamiliar_id')
+            ->join('generos', 'personas.genero_id', '=', 'generos.generos_id')
+            ->join('parentescos', 'personas.parentesco_id', '=', 'parentescos.parentescos_id')
+            ->select(
+                'personas.id_persona',
+                'personas.nombre_1',
+                'personas.nombre_2',
+                'personas.apellido_1',
+                'personas.apellido_2',
+                'personas.telefono',
+                'generos.genero',
+                'personas.direccion',
+                'personas.telefono',
+                'parentescos.parentesco')
+            ->where('personas.grupofamiliar_id', '=',$id)
+            ->get();
+        $view = \View::make('censoweb.censo.ficha', compact('grupos'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('ficha.pdf');
+
     }
 
 }

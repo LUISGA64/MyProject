@@ -13,7 +13,7 @@ Listado Comuneros
       <table id="myTable" class="table table-striped table-bordered table-hover table-condensed table-responsive" style="margin-left: 5px; margin-right: 15px">
         <caption><h3>Ficha Familiar Número: <strong>{{ $id }}</strong> </h3></caption>
         <thead>
-          <tr style="background-color: #17A589; color: #FDFEFE">
+          <tr style="background-color: #34495E; color: #FDFEFE;">
             <th style="text-align: center; width: 20%">Familiar</th>
             <th style="text-align: center; width: 20%">Sexo</th>
             <th style="text-align: center; width: 20%">Dirección</th>
@@ -39,7 +39,8 @@ Listado Comuneros
     <legend class="legendStyle" style="margin-top: 1px; margin-bottom: 12px; margin-left: 5px; color: #26B99A"></legend>
   </div>
   <div>
-    <a class="btn btn-info btn-close" style="margin-left: 15px" href="{{ route('grupo-familiar-index') }}"><span> <i class="fa fa-home"> Volver</i></span></a>
+    <a class="btn btn-info" style="margin-left: 15px" href="{{ route('grupo-familiar-index') }}"><span> <i class="fa fa-home"> Volver</i></span></a>
+    <a class="btn btn-dark" style="margin-left: 15px" href="{{ route('grupo-familiar-print',[$id]) }}"><span> <i class="fa fa-print"> Imprimir</i></span></a>
   </div>
 </div>
 @endsection

@@ -10,7 +10,6 @@
 Grupo Familiar
 @endsection
 
-
 @section('main_container')
 <div class="right_col" role="main">
 	<div class="">
@@ -24,7 +23,7 @@ Grupo Familiar
 
 				<div class="pull-right">
 					@permission('crear-grupo-familiar')
-					<a class="btn btn-success" style="margin-bottom: 5px; margin-top: 10px" href="{{ route('grupo-familiar-create') }}"><span class="btn-label"> <i class="fa fa-plus"></i></span> Grupo Familiar</a>
+					<a class="btn btn-success" title="Crear Ficha Familiar" href="{{ route('grupo-familiar-create') }}"><span class="btn-label"> <i class="fa fa-plus"></i></span> Grupo Familiar</a>
 					@endpermission
 				</div>
 			</div>
@@ -52,11 +51,11 @@ Grupo Familiar
                 <td>{{ $grupo->nombre_1 }} {{ $grupo->nombre_2 }} {{ $grupo->apellido_1 }} {{ $grupo->apellido_2 }}</td>
                 
                 <td style="text-align: center;">
-                <a class="btn btn-warning btn-sm" href="{{ route('personagrupo-familiar.edit', $grupo->id) }}"> <span class="btn-label"> <i class=" fa fa-edit"> Editar</i></span></a>
-                {{-- <a class="btn btn-danger" href="">Eliminar</a> --}}
-                <a class="btn btn-success btn-sm" href="{{ route('personagrupo-familiar.new',[$grupo->id]) }}"> <span class="btn-label">  <i class="fa fa-user-plus"> Usuario</i></span></a>
+                <a class="btn-dark btn-sm" title="Editar" href="{{ route('personagrupo-familiar.edit', $grupo->id) }}"> <span class="btn-label"> <i class=" fa fa-edit"> Editar</i></span></a>
 
-                <a class="btn btn-responsive btn-info btn-sm" href="{{ route('grupo-familiar.show',[$grupo->id]) }}"><span class="btn-label"><i class="fa fa-users"> Familiares</i></span></a>
+                <a class="btn-success btn-sm" title="Agregar Familiar" href="{{ route('personagrupo-familiar.new',[$grupo->id]) }}"> <span class="btn-label">  <i class="fa fa-user-plus"> Usuario</i></span></a>
+
+                <a class="btn-info btn-sm" title="Núcleo Familiar" href="{{ route('grupo-familiar.show',[$grupo->id]) }}"><span class="btn-label"><i class="fa fa-users"> Familiares</i></span></a>
                 
               </td>
               </tr>

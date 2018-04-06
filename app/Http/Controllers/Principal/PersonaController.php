@@ -65,8 +65,6 @@ class PersonaController extends Controller
             'parentescos'));
     }
 
-
-
     public function store(Request $request, $idGrupoFamiliar)
     {
         $validator = Validator::make($request->all(),[

@@ -37,22 +37,12 @@ Registro Grupo Familiar
               {{-- Tipo de Vivienda --}}
               <div class="col-md-3 col-md-3 col-xs-12 col-sm-6 col-md-8 form-group has-feedback">
                 {!!Form::label('tipo_vivienda', 'Tipo Vivienda')!!}
-                {{-- <select select name="tipo_vivienda" id="tipo_vivienda" class="form-control" >
-                  <option value="">Tipo Vivienda..</option>
-                  @foreach ($tiposvivienda as $tipvivienda)
-                  <option value="{{ $tipvivienda['id'] }}">{{ $tipvivienda['tipo_vivienda'] }}</option>
-                  @endforeach
-                </select> --}}
-                {!! Form::select('tipo_vivienda', $tiposvivienda->pluck('tipo_vivienda','id'),null, ['class' => 'form-control','old'=>'tipo_vivienda','placeholder'=>'luisga']) !!}
+                {!! Form::select('tipo_vivienda', $tiposvivienda->pluck('tipo_vivienda','id'),null, ['class' => 'form-control','old'=>'tipo_vivienda','placeholder'=>'Tipo Vivienda..']) !!}
               </div>
-              {{-- zONA --}}
+              {{-- Zona --}}
               <div class="col-md-3 col-md-3 col-xs-12 col-sm-6 col-md-8 form-group has-feedback">
                 {!!Form::label('zona', 'Zona')!!}
-                <select name="zona" class="form-control" id="zona">
-                  <option value="">Seleccione</option>
-                  <option value="U">Zona Urbana</option>
-                  <option value="R">Zona Rural</option>
-                </select>  
+                {!! Form::select('zona', ['Urbana'=>'Urbana','Rural'=>'Rural'],null,['class'=>'form-control','placeholder'=>'Zona..']) !!}
               </div>
             </div>
           </div>
