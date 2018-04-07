@@ -10,8 +10,8 @@ Listado Comuneros
 
   <div class="">
     <div class="row">
+      <caption><h3>Ficha Familiar Número: <strong>{{ $id }}</strong> </h3></caption>
       <table id="myTable" class="table table-striped table-bordered table-hover table-condensed table-responsive" style="margin-left: 5px; margin-right: 15px">
-        <caption><h3>Ficha Familiar Número: <strong>{{ $id }}</strong> </h3></caption>
         <thead>
           <tr style="background-color: #34495E; color: #FDFEFE;">
             <th style="text-align: center; width: 20%">Familiar</th>

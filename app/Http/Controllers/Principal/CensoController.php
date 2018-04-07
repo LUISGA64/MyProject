@@ -11,6 +11,7 @@
     use App\Models\Catalogos\Ocupacion;
     use App\Models\Economia\Actividad_Economica;
     use App\Models\Economia\Tipo_Actividad;
+    use App\Models\Localidad\Resguardo;
     use App\Models\Principal\Grupo_Familiar;
     use App\Models\Vivienda\Agua_Servida;
     use App\Models\Vivienda\Consumo_Agua;
@@ -225,11 +226,14 @@
     public function imprimir($id)
     {
         $y = Carbon::now()->year;
+        $resguardo = Resguardo::all();
         $grupos = DB::table('grupos_familiares')
             ->join('personas', 'grupos_familiares.id', '=', 'personas.grupofamiliar_id')
             ->join('generos', 'personas.genero_id', '=', 'generos.generos_id')
             ->join('parentescos', 'personas.parentesco_id', '=', 'parentescos.parentescos_id')
+            ->join('tipo_docs','personas.tipodoc_id','=','tipo_docs.tipodocs_id')
             ->select(
+                'grupos_familiares.id',
                 'personas.id_persona',
                 'personas.nombre_1',
                 'personas.nombre_2',
@@ -238,15 +242,17 @@
                 'personas.telefono',
                 'generos.genero',
                 'personas.direccion',
-                'personas.telefono',
-                'parentescos.parentesco')
+                'personas.identificacion',
+                'personas.fecha_nacimiento',
+                'personas.cabeza_familia',
+                'parentescos.parentesco',
+                'tipo_docs.codigo_doc')
             ->where('personas.grupofamiliar_id', '=',$id)
+            ->orderBy('personas.cabeza_familia','DESC')
             ->get();
-        $view = \View::make('censoweb.censo.ficha', compact('grupos'))->render();
+        $view = \View::make('censoweb.censo.ficha', compact('grupos','resguardo','id'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         return $pdf->stream('ficha.pdf');
-
     }
-
 }
