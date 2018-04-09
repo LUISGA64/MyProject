@@ -1,5 +1,5 @@
 @extends('layouts.blank')
-
+<head>
 @section('htmlheader_title')
   Inicio
 @endsection
@@ -7,14 +7,14 @@
 
 @section('main_container')
 
-
+</head>
 <!-- page content -->
 <div class="right_col" role="main">
 	<div class="row" style="margin-top: 60px;">
 		<div class="panel panel-default">
 			<div class="panel-body">
 				{!! Charts::styles() !!}
-			</head>
+
 			<body>
 				<!-- Main Application (Can be VueJS or other JS framework) -->
 				<div class="app">

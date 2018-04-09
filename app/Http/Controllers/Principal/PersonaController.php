@@ -20,30 +20,30 @@ use Validator;
 
 class PersonaController extends Controller
 {
-    
+
     public function index(Request $request)
     {
         $personas = DB::table('personas')
-        ->join('tipo_docs', 'personas.tipodoc_id', '=', 'tipo_docs.tipodocs_id')
-        ->join('generos', 'personas.genero_id', '=', 'generos.generos_id')
-        ->select(
-            'personas.id_persona',
-            'personas.grupofamiliar_id',
-            'personas.identificacion',
-            'personas.nombre_1',
-            'personas.nombre_2',
-            'personas.apellido_1',
-            'personas.apellido_2',
-            'personas.fecha_nacimiento',
-            'personas.edad',
-            'generos.genero',
-            'tipo_docs.codigo_doc')
-        ->get();
+            ->join('tipo_docs', 'personas.tipodoc_id', '=', 'tipo_docs.tipodocs_id')
+            ->join('generos', 'personas.genero_id', '=', 'generos.generos_id')
+            ->select(
+                'personas.id_persona',
+                'personas.grupofamiliar_id',
+                'personas.identificacion',
+                'personas.nombre_1',
+                'personas.nombre_2',
+                'personas.apellido_1',
+                'personas.apellido_2',
+                'personas.fecha_nacimiento',
+                'personas.edad',
+                'generos.genero',
+                'tipo_docs.codigo_doc')
+            ->get();
 
         return view('censoweb.personas.index', compact('id', 'ficha', 'personas'));
     }
 
-    
+
 
 
     public function create($id)
@@ -64,6 +64,8 @@ class PersonaController extends Controller
             'tiposdocumento',
             'parentescos'));
     }
+
+
 
     public function store(Request $request, $idGrupoFamiliar)
     {
@@ -92,8 +94,8 @@ class PersonaController extends Controller
 
         if ($validator->fails()) {
             return back()
-                        ->withErrors($validator)
-                        ->withInput();
+                ->withErrors($validator)
+                ->withInput();
         }
 
         $persona = new Persona;
@@ -146,7 +148,7 @@ class PersonaController extends Controller
             'personas',
             'generos',
             'tiposdocumento',
-            'parentescos', 
+            'parentescos',
             'ocupaciones',
             'niveles_educativos',
             'estadosciviles'
