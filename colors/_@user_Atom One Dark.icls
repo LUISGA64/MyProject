@@ -4,7 +4,7 @@
     <property name="created">2018-04-22T07:18:33</property>
     <property name="ide">PhpStorm</property>
     <property name="ideVersion">2017.2.1.0.0</property>
-    <property name="modified">2018-04-22T07:30:55</property>
+    <property name="modified">2018-04-25T22:01:20</property>
     <property name="originalScheme">Atom One Dark</property>
   </metaInfo>
   <option name="LINE_SPACING" value="1.4" />
@@ -533,7 +533,7 @@
     </option>
     <option name="DEFAULT_BRACES">
       <value>
-        <option name="FOREGROUND" value="32424a" />
+        <option name="FOREGROUND" value="3e92bd" />
         <option name="EFFECT_COLOR" value="32424a" />
       </value>
     </option>
